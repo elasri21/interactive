@@ -1,0 +1,246 @@
+/*Global rules*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    position: relative;
+    font-size: $main-size;
+    font-family: $family;
+    background-color: $white;
+    height: 100vh;
+}
+.marginbottom {
+    margin-bottom: 15px;
+}
+.error {
+    font-size: 12px;
+    font-weight: 500;
+    color: $error-color;
+}
+/*End of global rules*/
+.page {
+    @media #{$small} {
+        display: flex;
+        justify-content: space-between;
+        .left-section {
+            width: 260px !important;
+            height: 100% !important;
+            background-image: url("../images/bg-main-desktop.png");
+            .cont-cards {
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                height: 360px !important;
+                .card {
+                    &.card-1 {
+                        top: -10px !important;
+                        left: 90px !important;
+                    }
+                    &.card-2 {
+                         bottom: -10px;
+                        right: -120px;
+                    }
+                        
+                }
+            }
+        }
+        .right-section {
+            width: calc(100% - 400px);
+            height: 100%;
+            .form {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    @media #{$mobile} {
+        .left-section {
+            .cont-cards {
+                .card {
+                    &.card-1 {
+                        left: -20px;
+                        bottom: -50px;
+                        z-index: 111;
+                    }
+                    &.card-2 {
+                        right: -20px;
+                        top: 30px;
+                    }
+                }
+            }
+        }
+        .right-section {
+            .form {
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    height: 100%;
+    .left-section {
+        position: relative;
+        background-image: url("../images/bg-main-mobile.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        height: 277px;
+        .cont-cards {
+            position: absolute;
+            height: 277px;
+            width: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+            .card {
+                width: 300px;
+                height: 180px;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                &.card-1 {
+                    color: $white;
+                    padding: 15px;
+                    background-image: url("../images/bg-card-front.png"); 
+                    .card-num {
+                        text-align: right;
+                        margin-top: 25px;
+                    }
+                    .info {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: 20px;
+                    }
+                }
+                &.card-2 {
+                    background-image: url("../images/bg-card-back.png");
+                    .zeros {
+                        position: absolute;
+                        right: 38px;
+                        top: 76px;
+                        color: $white;
+                    }
+                }
+
+            }
+        }
+    }
+    .right-section {
+        position: relative;
+        .form {
+            position: absolute;
+            width: 300px;
+        }
+        form {
+            width: 100%;
+            label  {
+                font-size: 18px;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+            .flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .mth-yr {
+                    label {
+                        display: block;
+                    }
+                    input {
+                        display: inline;
+                        width: 80px;
+                    }
+                }
+                .cvc-con {
+                    width: 80px;
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+            input {
+                display: block;
+                width: 100%;
+                border: none;
+                outline: none;
+                background: none;
+                padding: 10px 15px;
+                border-radius: 6px;
+                &::placeholder {
+                    color: $placeholder-color;
+                }
+                &.field {
+                    border: 1px solid $placeholder-color;
+                }
+                
+                &.submit {
+                    background-color: $btn-bg;
+                    color: $white;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+    .right-section {
+        .completed {
+            @media #{$small} {
+                width: 300px !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%);
+            }
+            display: none;
+            width: 250px;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            .content {
+                text-align: center;
+                .check {
+                    margin-bottom: 20px;
+                }
+                h2 {
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    word-spacing: 4px;
+                    margin-bottom: 20px
+                }
+                p {
+                    font-size: 14px;
+                    color: $text-color;
+                    margin-bottom: 20px;
+                }
+                button {
+                    background-color: $btn-bg;
+                    padding: 10px 12px;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    color: $white;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+}
+
+
+/*footer rules*/
+footer {
+    @media #{$mobile} {
+        padding-top: 30px;
+    }
+    font-size: 11px;
+    text-align: center;
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}
