@@ -16,35 +16,36 @@ form.addEventListener("submit", function(e) {
     const month = form.elements.month;
     const year = form.elements.year;
     const cvc = form.elements.cvc;
-    if(isNaN(cardNumber.value) || cardNumber.value == "") {
+    if(isNaN(cardNumber.value) || cardNumber.value == "" || cardNumber.value.toString().length != 16) {
         e.preventDefault();
-        cardNumber.nextElementSibling.style.display = "block";
+        cardNumber.nextElementSibling.textContent = "Something goes wrong!";
     } else {
-        cardNumber.nextElementSibling.style.display = "none";
+        cardNumber.nextElementSibling.textContent = "";
     }
-    if(month.value == "") {
+    if(month.value == "" || month.value.toString().length != 2) {
         e.preventDefault();
-        month.nextElementSibling.style.display = "block";
+        month.nextElementSibling.textContent = "Something goes wrong!";
     } else {
-        month.nextElementSibling.style.display = "non";
+        month.nextElementSibling.textContent = "";
     }
-    if(year.value == "") {
+    if(year.value == "" || year.value.toString().length != 2) {
         e.preventDefault();
-        year.nextElementSibling.style.display = "block";
+        year.nextElementSibling.textContent = "Something goes wrong!";
     } else {
-        year.nextElementSibling.style.display = "none";
+        year.nextElementSibling.textContent = "";
     }
-    if(cvc.value == "") {
+    if(cvc.value == "" || cvc.value.toString().length != 3) {
         e.preventDefault();
-        cvc.nextElementSibling.style.display = "block";
+        cvc.nextElementSibling.textContent = "Something goes wrong!";
     } else {
-        cvc.nextElementSibling.style.display = "none";
+        cvc.nextElementSibling.textContent = "";
         formContainer.style.display = "none";
         completed.style.display = "block";
         nameOfCard.textContent = cardName.value;
         numberOfCard.textContent = cardNumber.value;
         dateOfCard.textContent = month.value + "/" + year.value;
         cvcOfCard.textContent = cvc.value;
+        console.log(cardName.value.length, cardNumber.value.length, month.value.length + "/" + year.value.length, cvc.value.length);
     }
     
 
