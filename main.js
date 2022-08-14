@@ -1,4 +1,8 @@
 // get the form element
+const numberOfCard = document.querySelector(".card-num p");
+const nameOfCard = document.querySelector(".name p");
+const dateOfCard = document.querySelector(".date p");
+const cvcOfCard = document.querySelector(".zeros p");
 const form = document.forms[0];
 const formContainer = document.querySelector(".form");
 const completed = document.querySelector(".completed");
@@ -7,6 +11,7 @@ const fields = Array.from(document.querySelectorAll(".required"));
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    const cardName = form.elements.cardholder;
     const cardNumber = form.elements.cardnumber;
     const month = form.elements.month;
     const year = form.elements.year;
@@ -36,6 +41,10 @@ form.addEventListener("submit", function(e) {
         cvc.nextElementSibling.style.display = "none";
         formContainer.style.display = "none";
         completed.style.display = "block";
+        nameOfCard.textContent = cardName.value;
+        numberOfCard.textContent = cardNumber.value;
+        dateOfCard.textContent = month.value + "/" + year.value;
+        cvcOfCard.textContent = cvc.value;
     }
     
 
@@ -64,23 +73,4 @@ for(let field of fields) {
 
 
 
-// for now it doesn't work/
-/*
-function checkFields(arr) {
-    let bool = false;
-    for(let field of arr) {
-        field.addEventListener("change", function(){
-            if(field.value == "") {
-                this.nextElementSibling.textContent = "Can't be empty";
-            } else if(isNaN(field.value)) {
-                this.nextElementSibling.textContent = "Wrong format, numbers only";
-            } else {
-                this.nextElementSibling.textContent = "";
-            }
-        });
-    }
-    return true;
-
-}
-*/
 
