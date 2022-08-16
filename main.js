@@ -19,15 +19,23 @@ form.addEventListener("submit", function(e) {
         e.preventDefault();
         cardNumber.nextElementSibling.textContent = "Check length!";
 
-    } else if(month.value.toString().length != 2) {
+    } else if(month.value.length != 2) {
         cardNumber.nextElementSibling.textContent = "";
         e.preventDefault();
         month.nextElementSibling.textContent = "Check length!";
-    } else if(year.value.toString().length != 2) {
+    } else if (+month.value < 0 || +month.value > 13) {
+        e.preventDefault();
+        month.nextElementSibling.textContent = "unknown month!";
+
+    } else if(year.value.length != 2) {
         month.nextElementSibling.textContent = "";
         e.preventDefault();
         year.nextElementSibling.textContent = "Check length!";
-    } else if(cvc.value.toString().length != 3) {
+    }else if (+year.value < 22 || +year.value > 27) {
+        e.preventDefault();
+        month.nextElementSibling.textContent = "unvalid year!";
+
+    } else if(cvc.value.length != 3) {
         year.nextElementSibling.textContent = "";
         e.preventDefault();
         cvc.nextElementSibling.textContent = "Check length!";
