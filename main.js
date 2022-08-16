@@ -10,33 +10,27 @@ const backHome = document.querySelector(".completed button");
 const fields = Array.from(document.querySelectorAll(".required"));
 
 form.addEventListener("submit", function(e) {
-    e.preventDefault();
     const cardName = form.elements.cardholder;
     const cardNumber = form.elements.cardnumber;
     const month = form.elements.month;
     const year = form.elements.year;
     const cvc = form.elements.cvc;
-    if(isNaN(cardNumber.value) || cardNumber.value == "" || cardNumber.value.toString().length != 16) {
+    if(cardNumber.value.length != 16) {
         e.preventDefault();
-        cardNumber.nextElementSibling.textContent = "Something goes wrong!";
-    } else {
+        cardNumber.nextElementSibling.textContent = "Check length!";
+
+    } else if(month.value.toString().length != 2) {
         cardNumber.nextElementSibling.textContent = "";
-    }
-    if(month.value == "" || month.value.toString().length != 2) {
         e.preventDefault();
-        month.nextElementSibling.textContent = "Something goes wrong!";
-    } else {
+        month.nextElementSibling.textContent = "Check length!";
+    } else if(year.value.toString().length != 2) {
         month.nextElementSibling.textContent = "";
-    }
-    if(year.value == "" || year.value.toString().length != 2) {
         e.preventDefault();
-        year.nextElementSibling.textContent = "Something goes wrong!";
-    } else {
+        year.nextElementSibling.textContent = "Check length!";
+    } else if(cvc.value.toString().length != 3) {
         year.nextElementSibling.textContent = "";
-    }
-    if(cvc.value == "" || cvc.value.toString().length != 3) {
         e.preventDefault();
-        cvc.nextElementSibling.textContent = "Something goes wrong!";
+        cvc.nextElementSibling.textContent = "Check length!";
     } else {
         cvc.nextElementSibling.textContent = "";
         formContainer.style.display = "none";
@@ -47,6 +41,8 @@ form.addEventListener("submit", function(e) {
         cvcOfCard.textContent = cvc.value;
         console.log(cardName.value.length, cardNumber.value.length, month.value.length + "/" + year.value.length, cvc.value.length);
     }
+    e.preventDefault();
+    
     
 
 });
@@ -58,7 +54,7 @@ backHome.addEventListener("click", function(){
 
 
 for(let field of fields) {
-    field.addEventListener("blur", function(){
+    field.addEventListener("change", function(){
         if(field.value == "") {
             this.nextElementSibling.textContent = "Can't be empty";
         } else if(isNaN(field.value)) {
@@ -66,9 +62,6 @@ for(let field of fields) {
         } else {
             this.nextElementSibling.textContent = "";
         }
-        // if(this.nextElementSibling.style.display) {
-        //     this.nextElementSibling.style.display = "none";
-        // }
     });
 }
 
